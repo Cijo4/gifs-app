@@ -7,9 +7,7 @@ import { Gif, SearchGifsResponse } from '../interface/gifs.interface';
 })
 export class GifsService {
   private apiKey: string = 'VoIZUad9brgvOmgJQoKsu0NScrOBFZCR';
-
   private _historial: string[] = [];
-
   private servicioUrl:string ='https://api.giphy.com/v1/gifs'
 
   public resultados:Gif[]=[];
@@ -46,7 +44,6 @@ export class GifsService {
     this.http
       .get<SearchGifsResponse>( `${ this.servicioUrl }/search`, { params } )
       .subscribe( ( resp ) => {
-        console.log(resp.data);
         this.resultados = resp.data;
         localStorage.setItem('resultados', JSON.stringify( this.resultados ))
       });
