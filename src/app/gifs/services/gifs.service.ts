@@ -9,14 +9,16 @@ export class GifsService {
 
   private _historial: string[] = [];
 
+  public resultados:any[]=[];
+
   get historial() {
-    //te esta forma no modifica el arreglo original
+    // De esta forma no modifica el arreglo original
     return [...this._historial];
   }
 
   constructor(private http: HttpClient) {}
 
-  buscarGifs(query: string) {
+  buscarGifs(query: string ='' ) {
     query = query.trim().toLowerCase();
 
     if (!this._historial.includes(query)) {
@@ -28,10 +30,11 @@ export class GifsService {
 
     this.http
       .get(
-        'http://api.giphy.com/v1/gifs/search?api_key=VoIZUad9brgvOmgJQoKsu0NScrOBFZCR&limit=10'
+        `https://api.giphy.com/v1/gifs/search?api_key=VoIZUad9brgvOmgJQoKsu0NScrOBFZCR&q=${ query }&limit=10`
       )
-      .subscribe((resp) => {
-        console.log(resp);
+      .subscribe( (resp: any) => {
+        console.log(resp.data);
+        this.resultados = resp.data;
       });
   }
 }
