@@ -1,6 +1,6 @@
 # GifsApp
 
-## Aplicación de busquedad de Gifs realizada con Angular.
+## Aplicación de busqueda de Gifs realizada con Angular.
 
 ---
 
