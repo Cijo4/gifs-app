@@ -9,6 +9,7 @@
     <div class="list-group list-reset">
 
       <a *ngFor= "let item of historial"
+      (click)= 'buscar( item )'
       href="#" class="list-group-item list-gorup-item-action">
         <!-- Este pipe hace que las palabras aparezcan con la primera letra en mayúscula -->
         {{ item | titlecase }}
